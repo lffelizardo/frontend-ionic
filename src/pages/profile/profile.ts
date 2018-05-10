@@ -35,8 +35,18 @@ export class ProfilePage {
                            this.cliente = response;
                            this.getImageIfExists();                  
                          },
-                        error => {});
+                        error => {
+                          if(error.status === 403){
+                            this.redirectToHomePage();
+                          }
+                        });
+    } else {
+      this.redirectToHomePage();
     }
+  }
+
+  redirectToHomePage(){
+    this.navCtrl.setRoot('HomePage');
   }
 
   getImageIfExists(){
