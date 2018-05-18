@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content padding>
-  <form [formGroup]="formGroup" (ngSubmit)="singupUser(); $event.preventDefault()">
+  <form [formGroup]="formGroup" (ngSubmit)="signupUser(); $event.preventDefault()">
     <ion-item>
       <ion-label stacked>Nome*</ion-label>
       <ion-input formControlName="nome" type="text"></ion-input>
@@ -37,7 +37,7 @@
     <p class="danger"  *ngIf="formGroup.controls.cpfOuCnpj.dirty && formGroup.controls.cpfOuCnpj.errors" margin-left>Valor inválido</p>
     <ion-item>
       <ion-label stacked>Senha*</ion-label>
-      <ion-input namme="senha" type="password"></ion-input>
+      <ion-input formControlName="senha" type="password"></ion-input>
     </ion-item>
     <p class="danger"  *ngIf="formGroup.controls.senha.dirty && formGroup.controls.senha.errors" margin-left>Valor inválido</p>
     <ion-item>
@@ -92,7 +92,7 @@
           </ion-option>
         </ion-select>
     </ion-item>
-    <button ion-button block type="submit" [disabled]="formGroup.invalid">Criar conta</button>
+    <button ion-button block type="submit">Criar conta</button>
   </form>
 
 </ion-content>
