@@ -58,4 +58,8 @@ export class CartPage {
     }
   }
 
+  checkout(){
+    this.navCtrl.push('PickAddressPage');
+  }
+
 }
