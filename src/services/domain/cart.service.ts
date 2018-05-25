@@ -27,7 +27,7 @@ export class CartService{
     addProduto(produto: ProdutoDTO): Cart{
         let cart = this.getCart();
         let position = this.encontrarPosicao(produto,cart);
-        if(position !== -1){
+        if(position === -1){
             cart.items.push({quantidade: 1, produto: produto});
         }
         this.storage.setCart(cart);

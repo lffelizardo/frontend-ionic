@@ -82,7 +82,6 @@ export class ErrorInterceptor implements HttpInterceptor {
     }
 
     handleDefaultError(errorObj){
-        console.log('caiu aki')
         let alert = this.alert.create({
             title: `Erro ${errorObj.status} : ${errorObj.error}`,
             message: errorObj.message,
