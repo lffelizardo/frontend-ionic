@@ -40,7 +40,7 @@ export class PickAddressPage {
                           let cart = this.cartService.getCart();
 
                            this.pedido = {
-                              client: {id:response['id']},
+                              cliente: {id:response['id']},
                               enderecoDeEntrega: null,
                               pagamento: null,
                               itens: cart.items.map(x => {

@@ -19,6 +19,7 @@ import { ProdutoService } from '../services/domain/produto.service';
 import { CartService } from '../services/domain/cart.service';
 
 import localePt from '@angular/common/locales/pt'
+import { PedidoService } from '../services/domain/pedido.service';
 
 registerLocaleData(localePt, 'pt')
 
@@ -49,7 +50,8 @@ registerLocaleData(localePt, 'pt')
     StorageService,
     ClienteService,
     ProdutoService,
-    CartService
+    CartService,
+    PedidoService
   ]
 })
 export class AppModule {}
