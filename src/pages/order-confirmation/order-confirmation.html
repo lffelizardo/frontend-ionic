@@ -3,17 +3,20 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Confira seu pedido</ion-title>
+    <ion-title *ngIf="!codPedido">Confira seu pedido</ion-title>
+    <ion-title *ngIf="codPedido">Pedido registrado!</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-card>
-    <ion-card-header>
-      Itens do pedido
-    </ion-card-header>
 
-    <ion-list>
+  <div *ngIf="!codPedido">
+    <ion-card>
+      <ion-card-header>
+        Itens do pedido
+      </ion-card-header>
+
+      <ion-list>
       <ion-item *ngFor="let item of cartItems">
         <ion-thumbnail iem-start>
           <img [src]="item.produto.imageUrl || 'assets/imgs/prod.jpg'">
@@ -23,14 +26,14 @@
         <p>{{item.quantidade}}</p>
         <p item-end>{{item.produto.preco * item.quantidade | currency: 'BRL': 'symbol'}}</p>
       </ion-item>
-
-        <ion-item>
-          <h2>Total</h2>
-          <h2 item-end>{{total() | currency: 'BRL': 'symbol'}}</h2>
-        </ion-item>
+      
+      <ion-item>
+        <h2>Total</h2>
+        <h2 item-end>{{total() | currency: 'BRL': 'symbol'}}</h2>
+      </ion-item>
       </ion-list>
     </ion-card>
-
+    
     <ion-card>
       <ion-card-header>
         Cliente
@@ -40,19 +43,19 @@
         <p>{{cliente?.email}}</p>
       </ion-item>
     </ion-card>
-
+    
     <ion-card>
       <ion-card-header>
         Endereço de Entrega
       </ion-card-header>
-
+      
       <ion-item>
         <h2>{{endereco?.logradouro}}, {{endereco?.numero}}</h2>
         <p>{{endereco?.complemento}}, {{endereco?.bairro}} CEP {{endereco?.cep}}</p>
         <p>{{endereco?.cidade.nome}}, {{endereco?.cidade.estado.nome}}</p>
       </ion-item>
     </ion-card>
-
+    
     <ion-card>
       <ion-card-header>
         Pagamento
@@ -68,4 +71,19 @@
     </ion-card>
     <button ion-button block (click)="checkout()">Confirmar pedido</button>
     <button ion-button block outline (click)="back()">Voltar</button>
-</ion-content>
+  </div>
+    
+    <div *ngIf="codPedido">
+      <ion-card>
+        <ion-card-header>
+          Seu pedido foi registrado!
+        </ion-card-header>
+        <ion-item>
+          <h2>Código do pedido: {{codPedido}}</h2>
+          <p>Verifique seu email</p>
+        </ion-item>
+      </ion-card>
+      <button ion-button block outline (click)="backToHome()">Voltar</button>
+    </div>
+  </ion-content>
+  
