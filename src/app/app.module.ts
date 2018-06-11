@@ -20,6 +20,7 @@ import { CartService } from '../services/domain/cart.service';
 
 import localePt from '@angular/common/locales/pt'
 import { PedidoService } from '../services/domain/pedido.service';
+import { ImageUtilService } from '../services/image-util.service';
 
 registerLocaleData(localePt, 'pt')
 
@@ -51,7 +52,8 @@ registerLocaleData(localePt, 'pt')
     ClienteService,
     ProdutoService,
     CartService,
-    PedidoService
+    PedidoService,
+    ImageUtilService
   ]
 })
 export class AppModule {}
